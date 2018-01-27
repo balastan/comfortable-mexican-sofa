@@ -1,0 +1,5 @@
+.page-header
+  %h2= "Editing #{@gallery.title}"
+
+= comfy_form_for @gallery, :as => :gallery, :url => {:action => :update} do |form|
+  = render form

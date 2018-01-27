@@ -1,0 +1,36 @@
+.page-header
+  = link_to t('.new_link'), new_comfy_admin_cms_gallery_gallery_path, :class => 'btn btn-default pull-right'
+  %h2= t('.title')
+
+= render 'comfy/admin/cms/partials/sites_before'
+
+= render :partial => 'comfy/admin/cms/categories/index', :object => 'Comfy::Cms::File'
+
+= comfy_paginate @galleries
+
+%table.table.table-hover.table-bordered
+  %thead
+    %td
+      = "Preview"
+    %td
+      = "Name"
+    %td
+      = "Embed Code"
+    %td
+      = "Actions"
+  - @galleries.each do |gallery|
+    %tr
+      %td
+        - gallery.photos.limit(1).each do |photo|
+          = image_tag(photo.image.url(:admin_thumb), :class => 'thumb dragger')
+      %td.main
+        = link_to gallery.title, comfy_admin_cms_gallery_gallery_photos_path(gallery)
+      %td.main
+        = "{{ cms:helper:render_gallery: #{gallery.identifier} }}"
+      %td
+        .btn-group.btn-group-sm
+          = link_to t('.show_photos'),  comfy_admin_cms_gallery_gallery_photos_path(gallery), :class => 'btn btn-default'
+          = link_to t('.edit'), edit_comfy_admin_cms_gallery_gallery_path(gallery), :class => 'btn btn-default'
+          = link_to t('.delete'), comfy_admin_cms_gallery_gallery_path(gallery), :method => :delete, :data => {:confirm => t('.are_you_sure')}, :class => 'btn btn-danger'
+
+= render 'comfy/admin/cms/partials/sites_after'

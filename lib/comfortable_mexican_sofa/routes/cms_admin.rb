@@ -33,6 +33,12 @@ class ActionDispatch::Routing::Mapper
             end
             resources :categories
           end
+          namespace :gallery do
+            resources :galleries do
+              resources :photos do
+              end
+            end
+          end
         end
       end
     end
