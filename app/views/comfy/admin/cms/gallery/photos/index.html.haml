@@ -1,0 +1,20 @@
+.page-header
+  = link_to t('.new_link'), new_comfy_admin_cms_gallery_gallery_photo_path, :class => 'btn btn-default pull-right'
+  %h2= "Photos in #{@gallery.title}"
+
+= render 'comfy/admin/cms/partials/sites_before'
+
+%table.table.table-hover.table-bordered
+  - @photos.each do |photo|
+    %tr
+      %td
+        = image_tag(photo.image.url(:admin_thumb), :class => 'thumb dragger')
+      %td.main
+        .title
+          = photo.title
+      %td
+        .btn-group.btn-group-sm
+          = link_to t('.edit'), edit_comfy_admin_cms_gallery_gallery_photo_path(@gallery, photo), :class => 'btn btn-default'
+          = link_to t('.delete'), comfy_admin_cms_gallery_gallery_photo_path(@gallery, photo), :method => :delete, :data => {:confirm => t('.are_you_sure')}, :class => 'btn btn-danger'
+
+= render 'comfy/admin/cms/partials/sites_after'
