@@ -16,7 +16,7 @@ class Comfy::Cms::File < ActiveRecord::Base
         ).merge(ComfortableMexicanSofa.config.upload_file_options[:styles] || {})
       end
     },
-    :path => ':rails_root/cms/files/:id_partition/files/:style/:filename',
+    :path => ':rails_root/public/system/cms/files/:id_partition/files/:style/:filename',
     :url => '/system/cms/files/:id_partition/files/:style/:filename',
   )
   before_post_process :is_image?
