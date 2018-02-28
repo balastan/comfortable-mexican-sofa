@@ -8,7 +8,7 @@
   - @photos.each do |photo|
     %tr
       %td
-        = image_tag(photo.image.url(:admin_thumb), :class => 'thumb dragger', :style => 'width: 40px;')
+        = image_tag(photo.image.url(:admin_thumb), :class => 'thumb dragger', :style => 'max-width: fit-content;')
       %td.main
         .title
           = photo.title
