@@ -7745,12 +7745,15 @@
 				},
 				setMarker: function(range, node, type)
 				{
+					var nclone = window.getSelection().getRangeAt(0).cloneRange();
 					range = range.cloneRange();
-
 					try {
+						var selection = window.getSelection();
 						range.collapse(type);
 						range.insertNode(node);
 
+						selection.removeAllRanges();
+						selection.addRange(nclone);
 					}
 					catch (e)
 					{
