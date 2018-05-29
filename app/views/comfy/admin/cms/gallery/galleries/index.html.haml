@@ -26,7 +26,7 @@
       %td.main
         = link_to gallery.title, comfy_admin_cms_gallery_gallery_photos_path(gallery)
       %td.main
-        = "{{ cms:helper:render_gallery: #{gallery.identifier} }}"
+        = "{{ cms:helper:render_gallery:#{gallery.identifier} }}"
       %td
         .btn-group.btn-group-sm
           = link_to t('.show_photos'),  comfy_admin_cms_gallery_gallery_photos_path(gallery), :class => 'btn btn-default'
